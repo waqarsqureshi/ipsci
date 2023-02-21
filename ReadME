@@ -7,3 +7,6 @@ conda create --name ipsci --file requirements.txt
 otherwise use the following:
 
 pip install -r requirements.txt
+
+The model files are on the link below:
+https://huggingface.co/waqarsqureshi
