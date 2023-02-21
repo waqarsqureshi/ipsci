@@ -1,0 +1,9 @@
+# It is better to create a conda environment
+
+if using conda then:
+
+conda create --name ipsci --file requirements.txt
+
+otherwise use the following:
+
+pip install -r requirements.txt
