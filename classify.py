@@ -21,8 +21,8 @@ from timm.models import create_model, apply_test_time_pool, load_checkpoint, is_
 #default folder
 #######################
 class_names = ['1','2','3' ,'4' ,'5' ,'6' ,'7', '8' ,'9' ,'10']
-checkpoint_path = '/home/pms/pytorch-image-models/output/train/20221101-155102-swinv2_base_window12to24_192to384_22kft1k-384/last.pth.tar'
-input_path = "/home/pms/pms-code/ipsci-script/countLocalRoads/cropImg" #"/home/pms/CIFAR-10-images-cropImg/test"
+checkpoint_path = '/home/pms/pms-code/ipsci-script/checkpoints/20221101-155102-swinv2_base_window12to24_192to384_22kft1k-384/last.pth.tar'
+input_path = "/home/pms/pms-code/ipsci-script/countLocalRoads/cropImg" 
 output_path = "./results/cropImg/52/" #"./results/crop"
 detailFile= 'detailed-crop-result.xls'
 #######################
@@ -52,9 +52,9 @@ def create_load_model(name,checkpoint_path):
     return model
 
 #-----------------
-def saveResult(input_path,output_path,img,top1,args):
+def saveResult(input_path,img,top1,args):
     if args.savedir:
-        out_img_path = osp.join(output_path,str(int(class_names[int(str(int(top1.indices[0])))])))
+        out_img_path = osp.join(args.savedir,str(int(class_names[int(str(int(top1.indices[0])))])))
     try:
         os.makedirs(out_img_path , exist_ok=True)
     except OSError as e:
@@ -136,13 +136,13 @@ def process(args):
             print('Error: There is syntax error in the code. Exiting from further rating.')
             break
         #save the image along with its rating
-        saveResult(path,output_path,img,top1,args)
+        saveResult(path,img,top1,args)
     print('=========================================================')
     print('Total paths:', len(paths))
     print('one: ',count1,'two: ',count2,'three: ',count3,'four: ',count4,'five: ',count5,'six: ',count6,'seven: ',count7,'eight: ',count8,'nine: ',count9,'ten: ',count10)
     print('=========================================================')
     # save the file
-    wb2.save(detailFile)
+    wb2.save(args.resultFile)
 
 #===============================================
 
@@ -158,7 +158,7 @@ def main() :
     if args.savedir:
         #output_path = pathlib.Path(args.savedir)
         try:
-            os.makedirs(output_path, exist_ok=True)
+            os.makedirs(args.savedir, exist_ok=True)
             print("Directory created")
         except OSError as e:
             print("Error: Directory already exists. Delete the directory and run again.")

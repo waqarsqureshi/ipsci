@@ -59,11 +59,11 @@ def result_segImage(result,
 
         return color_seg
 #####################################
-def save(output_path,segImg_path,cropImg_path,path,args,segImage,orig):
+def save(segImg_path,cropImg_path,path,args,segImage,orig):
     path = path.replace(".JPG",".jpg")
     if args.savedir:
-        seg_out = os.path.join(output_path,segImg_path,path.split("/")[-2])
-        crop_out = os.path.join(output_path,cropImg_path,path.split("/")[-2])
+        seg_out = os.path.join(args.savedir,segImg_path)
+        crop_out = os.path.join(args.savedir,cropImg_path)
     try:
         os.makedirs(seg_out, exist_ok=True)
         os.makedirs(crop_out, exist_ok=True)
@@ -82,7 +82,7 @@ def segmentImage(args):
     paths = get_img_paths(args.path)
     ITER = 0;
     if not paths:
-        print( "Did not find any files. Please consult the README." )
+        print( "Error segmentImage: Did not find any files. Please consult the README." )
         sys.exit(1)
     for path in tqdm(paths):
         image = cv2.imread(path) # Read the image using opencv format
@@ -102,7 +102,6 @@ def segmentImage(args):
         count = cv2.countNonZero(gray_mask)
         contours, hierarchy = cv2.findContours(gray_mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         thres = (orig.shape[0]*orig.shape[1])*(0.25) # a heruristic value
-        print(len(contours))
         if count<thres or len(contours)>20: # a heuristic value
             #showImage(segImage,args)
             ITER = ITER +1
@@ -110,7 +109,7 @@ def segmentImage(args):
             continue
         # end of image removal code
         else:
-            save(output_path,segImg_path,cropImg_path,path,args,segImage[230:560,0:700],orig[230:560,0:700])
+            save(segImg_path,cropImg_path,path,args,segImage[230:560,0:700],orig[230:560,0:700])
             #a = []
             #a.append(segImage[230:560,0:700])
             #a.append(orig[230:560,0:700])
@@ -140,7 +139,7 @@ def main() :
     if args.savedir:
         #output_path = pathlib.Path(args.savedir)
         try:
-            os.makedirs(output_path, exist_ok=True)
+            os.makedirs(args.savedir, exist_ok=True)
             print("Directory created")
         except OSError as e:
             print("Error: Directory already exists. Delete the directory and run again.")
