@@ -8,5 +8,10 @@ otherwise use the following:
 
 pip install -r requirements.txt
 
-The model files are on the link below:
-https://huggingface.co/waqarsqureshi
+#How to use it? There are two seperate scripts one for segmentation of road and other for classification of road
+
+python extract_pavement.py -path /home/pms/pms-dataset/RegionalRoads2018/R864/SCRIM --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM 
+
+
+##########################################
+python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/SCRIM/segImg --resultFile R864SCRIMsegImg.xls
