@@ -11,7 +11,8 @@ def get_img_paths(path):
     if '*' in p:
         paths = sorted(glob.glob(p, recursive=True))  # glob
     elif os.path.isdir(p):
-        onlyImages = os.path.join(path, "*" , "*.jpg")
+        #onlyImages = os.path.join(path, "*" , "*.jpg") # uncomment and comment below if the path has sub directories
+        onlyImages = os.path.join(path, "*.jpg") # uncomment if the path do not have sub directories
         paths = sorted(glob.glob(onlyImages))  # dir
     elif os.path.isfile(p):
         paths = [p]  # files
