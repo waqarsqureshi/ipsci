@@ -12,6 +12,51 @@ pip install -r requirements.txt
 
 python extract_pavement.py -path /home/pms/pms-dataset/RegionalRoads2018/R864/SCRIM --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM 
 
+python extract_pavement.py -path /home/pms/pms-dataset/RegionalRoads2018/R864/RSP --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/RSP
+
+python extract_pavement.py -path /home/pms/pms-dataset/RegionalRoads2018/R313/RSP --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI-R313/RSP
+
+python extract_pavement.py -path /home/pms/pms-dataset/RegionalRoads2018/R313/SCRIM --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI-R313/SCRIM
 
 ##########################################
 python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/SCRIM/segImg --resultFile R864SCRIMsegImg.xls
+python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM/cropImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/SCRIM/cropImg --resultFile R864SCRIMcropImg.xls
+
+python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/RSP/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/RSP/segImg --resultFile R864RSPsegImg.xls
+
+python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R313/RSP/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R313/RSP/segImg --resultFile R313RSPsegImg.xls
+
+python classify.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R313/SCRIM/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R313/SCRIM/segImg --resultFile R313SCRIMsegImg.xls
+
+python classify2.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/SCRIM/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/SCRIM2/segImg --resultFile CR864SCRIMsegImg.xls --model "convnext_small"
+python classify2.py -path /home/pms/pms-dataset/RegionalRoads2018/PSCI-R864/RSP/segImg --savedir /home/pms/pms-dataset/RegionalRoads2018/PSCI/R864/RSP2/segImg --resultFile CR864RSPsegImg.xls --model "convnext_small"
+
+python classify2.py -path /home/pms/CIFAR-10-images-segImg/test --savedir ./segImg --resultFile test.xls --model "convnext_small"
+
+
+################################################
+python extract_pavement.py -path "/home/pms/pms-dataset/RegionalRoads2023/Jpegs/CORK280223/Cam1" --savedir "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORK280223/Cam1"
+
+python extract_pavement.py -path "/home/pms/pms-dataset/RegionalRoads2023/Jpegs/CORK280223B/Cam1" --savedir "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORK280223B/Cam1"
+
+python extract_pavement.py -path "/home/pms/pms-dataset/RegionalRoads2023/Jpegs/CORKVDEOSECTION21D/Cam1" --savedir "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORKVDEOSECTION21D/Cam1"
+
+python extract_pavement.py -path "/home/pms/pms-dataset/RegionalRoads2023/Jpegs/corkvideosection21/Cam1" --savedir "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/corkvideosection21/Cam1"
+
+python extract_pavement.py -path "/home/pms/pms-dataset/RegionalRoads2023/Jpegs/Corkvideosurveysection21B/Cam1" --savedir "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/Corkvideosurveysection21B/Cam1"
+
+##################################################
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORK280223/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/CORK280223/Cam1/segImg" --resultFile CORK280223segImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORK280223B/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/CORK280223B/Cam1/segImg" --resultFile CORK280223BsegImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/CORKVDEOSECTION21D/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/CORKVDEOSECTION21D/Cam1/segImg" --resultFile CORKVDEOSECTION21DsegImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/corkvideosection21/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/corkvideosection21/Cam1/segImg" --resultFile corkvideosection21segImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/corkvideosection21c/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/corkvideosection21c/Cam1/segImg" --resultFile corkvideosection21csegImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/corkvideosection21E/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/corkvideosection21E/Cam1/segImg" --resultFile corkvideosection21EsegImg.xls
+
+python classify.py -path "/home/pms/pms-dataset/RegionalRoads2023/Result/WE040323/Jpegs/Corkvideosurveysection21B/Cam1/segImg" --savedir "/home/pms/pms-dataset/RegionalRoads2023/PSCI/WE040323/Jpegs/Corkvideosurveysection21B/Cam1/segImg" --resultFile Corkvideosurveysection21BsegImg.xls
