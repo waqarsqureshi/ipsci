@@ -89,6 +89,7 @@ def segmentImage(args):
         
         if (image.shape[0] != 576) or (image.shape[1] != 720):
             #orig = image[252:828,600:1320]
+            #orig = image[40:616,0:720] # we dont need to do it as the image might of other size too. we cater only by resizing below
             orig = cv2.resize(image, (576, 720)) #(h,w)
             #orig = image[252:828,600:1320]
         else:
