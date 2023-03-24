@@ -62,6 +62,8 @@ def saveResult(input_path,img,top1,args):
         exit()
     img_name = osp.basename(input_path)
     #new_img_name = img_name.split(".")[0]+ img_name.split(".")[1] + "_" + "P_" + str(int(class_names[int(str(int(top1.indices[0])))])) + ".jpg"
+    print(img.size)
+    exit()
     img.save(osp.join(out_img_path,img_name))
 ######################################
 
